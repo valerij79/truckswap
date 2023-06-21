@@ -7,23 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subunit extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'truck',
-        'subunit',
+        'main_truck_id',
+        'subunit_truck_id',
         'start_date',
         'end_date'
     ];
-
-    // Define the relationships to the Truck model
-    public function Truck()
+    public function mainTruck()
     {
-        return $this->belongsTo(Truck::class, 'truck');
+        return $this->belongsTo(Truck::class, 'main_truck_id');
     }
 
     public function subunitTruck()
     {
-        return $this->belongsTo(Truck::class, 'subunit');
+        return $this->belongsTo(Truck::class, 'subunit_truck_id');
     }
 }
+

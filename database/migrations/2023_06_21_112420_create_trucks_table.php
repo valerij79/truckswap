@@ -6,17 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**y
+    /**
      * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('trucks', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_number', 255)->unique();
-            $table->integer('year');
-            $table->text('notes')->nullable();
-            $table->timestamps();
+            $table->string('unit_number', 255)->unique(); // Sunkvežimio identifikacinis numeris
+            $table->integer('year'); // Sunkvežimio pirmos registracijos metai
+            $table->text('notes')->nullable(); // Laisva forma įvedami komentarai
+            $table->timestamps(); // Laravel automatiškai sukurs created_at ir updated_at stulpelius
         });
     }
 

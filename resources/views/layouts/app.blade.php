@@ -38,6 +38,7 @@
                             <a class="nav-link" href="{{ route('subunits.index') }}">Subunits</a>
                         </li>
                         @endauth
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -84,4 +85,3 @@
     </div>
 </body>
 </html>
-

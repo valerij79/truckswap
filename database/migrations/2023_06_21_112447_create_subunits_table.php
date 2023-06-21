@@ -6,18 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('subunits', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('truck_id');
-            $table->unsignedBigInteger('subunit_id');
+            $table->unsignedBigInteger('main_truck_id');
+            $table->unsignedBigInteger('subunit_truck_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
+            
+            $table->foreign('main_truck_id')->references('id')->on('trucks')->onDelete('cascade');
+            $table->foreign('subunit_truck_id')->references('id')->on('trucks')->onDelete('cascade');
+            
+            $table->unique(['main_truck_id', 'subunit_truck_id', 'start_date', 'end_date'], 'custom_subunits_unique');
 
-            $table->foreign('truck_id')->references('id')->on('trucks');
-            $table->foreign('subunit_id')->references('id')->on('trucks');
         });
     }
 
